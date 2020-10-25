@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from rest_framework.response import Response
 from rest_framework.views import APIView
+import random
 from .serializer import ProjectSerializer,ProfileSerializer
 
 # Create your views here.
@@ -13,9 +14,13 @@ def index(request):
 
     try:
         projects=Projects.objects.all()
+        projects = projects[::-1]
+        s_project = random.randint(0, len(projects)-1)
+        random_project = projects[s_project]
+        print(random_project.image)
     except Exception as e:
         raise  Http404()
-    return render(request,'index.html',{"projects":projects})
+    return render(request,'index.html',{"projects":projects,'random_project':random_project})
 
 @login_required(login_url='/accounts/login/')
 def post(request):
@@ -170,6 +175,6 @@ class ProfileList(APIView):
 @login_required(login_url='/accounts/login/')
 def apiView(request):
     current_user=request.user
-    title="Api"
+    title="Api|Developers"
     profis=Profile.objects.filter(user=current_user)[0:1]
     return render(request,'api.html',{"title":title,'profile':profis})

@@ -28,8 +28,6 @@ class Projects(models.Model):
         searched=cls.objects.filter(name__icontains=word)
         return searched
 
-
-
 class Profile(models.Model):
     profile=CloudinaryField('image', null=True)
     bio=models.CharField(max_length=60)
