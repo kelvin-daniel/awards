@@ -1,0 +1,114 @@
+{%extends 'base.html'%}
+{%load bootstrap4%}
+{{block.super}}
+{%block content%}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4 sidePro bg-dark" >
+      {%if profile%}
+      {%for i in profile%}
+      <div class="improfile">
+        <div class="over">
+
+
+        <img height="120" class="rounded-circle hoverable " src="{{i.profile.url}}" alt="">
+        <span id="user">{{user}}</span>
+        <p>Status {{i.bio}}</p>
+          </div>
+      </div>
+      <br>
+
+        <p>Phone:{{i.phone}}</p>
+      {%endfor%}
+      {%else%}
+      <div class="improfile">
+        <div class="over">
+
+
+        <img height="120" class="rounded-circle hoverable " src="" alt="">
+        <span id="user">{{user}}</span>
+
+        <p style="padding:5px" class="alert alert-warning">Please update your profile for better experience</p>
+        <br>
+          </div>
+      </div>
+      {%endif%}
+      <br>
+      <p>{{user.email}}</p>
+
+      <p>You have {{projects|length}} Projects</p>
+      <a class="btn btn-outline-danger" href="/logout/">Logout</a>
+
+
+      <button id='profile' data-toggle="modal" data-target="#modalSubscriptionForm" class="btn btn-default" type="button" name="button" >Update Profile</button>
+      <div style='color:black' class="modal fade" id="modalSubscriptionForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h4 class="modal-title w-100 font-weight-bold " style="color:black">Edit Profile</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body mx-3">
+
+            <form class="" action="/user/profile/" method="POST" enctype="multipart/form-data">
+              {%csrf_token%}
+              {%bootstrap_form form%}
+              <div class="modal-footer d-flex justify-content-center">
+                <button type="submit" class="btn btn-default">Update <i class="fas fa-paper-plane-o ml-1"></i></button>
+              </div>
+            </form>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    </div>
+    <div class="col-md-7">
+      <h1>My Projects</h1>
+      <hr>
+      {%if projects%}
+      <div class="row">
+        {%for project in projects%}
+        <div class="col-md-6">
+          <div class="card content">
+            <div class="image">
+                <a class="img" href="/project/{{project.id}}">  <img class="img-fluid" src="{{project.image.url}}" alt=""></a>
+            </div>
+            <div class="check">
+              <i class="dta">{{project.date}}</i>
+              <p>{{project.name}}</p>
+
+              <hr>
+              <div class="">
+                <i class="fas fa-pastafarianism"></i>
+                <i class="far fa-star"></i>
+              </div>
+            </div>
+
+          </div>
+          <br>
+        </div>
+
+        {%endfor%}
+
+
+      </div>
+      {%else%}
+      <p class="alert alert-info">You have Not Submitted any Project <br>
+      Get started <a href="{%url 'post'%}">Here</a> To get a star</p>
+      {%endif%}
+
+    </div>
+
+  </div>
+
+</div>
+
+{%endblock%}
