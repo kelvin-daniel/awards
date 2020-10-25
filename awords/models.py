@@ -1,12 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
 class Projects(models.Model):
     name=models.CharField(max_length=30)
-    image=models.ImageField(upload_to='projects/')
+    image=models.ImageField(upload_to='images/', verbose_name='Picture', null=False)
     design=models.IntegerField(default=0)
     usability=models.IntegerField(default=0)
     content=models.IntegerField(default=0)
@@ -14,8 +15,8 @@ class Projects(models.Model):
     description=models.TextField(max_length=320)
     link=models.URLField(max_length=60)
     date=models.DateField(auto_now=True)
-    screen1=models.ImageField(upload_to='screenshot/',blank=True)
-    screen2=models.ImageField(upload_to='screenshot/',blank=True)
+    screen1=models.ImageField(upload_to='images/', verbose_name='Picture', blank=True)
+    screen2=models.ImageField(upload_to='images/', verbose_name='Picture', blank=True)
 
     class Meta:
         ordering=['-name']
@@ -30,7 +31,7 @@ class Projects(models.Model):
 
 
 class Profile(models.Model):
-    profile=models.ImageField(upload_to='profile/')
+    profile=CloudinaryField('image', null=True)
     bio=models.CharField(max_length=60)
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     phone=models.IntegerField()
