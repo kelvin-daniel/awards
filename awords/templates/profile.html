@@ -9,11 +9,9 @@
       {%for i in profile%}
       <div class="improfile">
         <div class="over">
-
-
-        <img height="120" class="rounded-circle hoverable " src="{{i.profile.url}}" alt="">
-        <span id="user">{{user}}</span>
-        <p>Status {{i.bio}}</p>
+        <img style="height: 110px; width: 110px;" class="rounded-circle hoverable " src="{{i.profile.url}}" alt="">
+        <span class="btn float-right" style="border-radius: 5px; background-color: #2bbbad;">{{user}}</span>
+        <div class="row mt-4 ml-3 ">Status {{i.bio}}</div>
           </div>
       </div>
       <br>
@@ -23,11 +21,8 @@
       {%else%}
       <div class="improfile">
         <div class="over">
-
-
         <img height="120" class="rounded-circle hoverable " src="" alt="">
         <span id="user">{{user}}</span>
-
         <p style="padding:5px" class="alert alert-warning">Please update your profile for better experience</p>
         <br>
           </div>
@@ -37,7 +32,7 @@
       <p>{{user.email}}</p>
 
       <p>You have {{projects|length}} Projects</p>
-      <a class="btn btn-outline-danger" href="/logout/">Logout</a>
+      <a class="btn btn-outline-info" href="/logout/">Logout</a>
 
 
       <button id='profile' data-toggle="modal" data-target="#modalSubscriptionForm" class="btn btn-default" type="button" name="button" >Update Profile</button>
@@ -67,9 +62,7 @@
         </div>
       </div>
     </div>
-
-
-    </div>
+  </div>
     <div class="col-md-7">
       <h1>My Projects</h1>
       <hr>
@@ -101,7 +94,7 @@
 
       </div>
       {%else%}
-      <p class="alert alert-info">You have Not Submitted any Project <br>
+      <p class="alert alert-info">You have No Projects to display <br>
       Get started <a href="{%url 'post'%}">Here</a> To get a star</p>
       {%endif%}
 

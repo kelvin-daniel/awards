@@ -14,13 +14,13 @@ def index(request):
 
     try:
         projects=Projects.objects.all()
-        projects = projects[::-1]
-        s_project = random.randint(0, len(projects)-1)
-        random_project = projects[s_project]
-        print(random_project.image)
+        # projects = projects[::-1]
+        # s_project = random.randint(0, len(projects)-1)
+        # random_project = projects[s_project]
+        # print(random_project.image)
     except Exception as e:
         raise  Http404()
-    return render(request,'index.html',{"projects":projects,'random_project':random_project})
+    return render(request,'index.html',{"projects":projects})
 
 @login_required(login_url='/accounts/login/')
 def post(request):
