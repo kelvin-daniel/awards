@@ -138,9 +138,6 @@
   .comments{
     background-color: #FFFFFF;
   }
-  /* .dsign{
-    text-align: center;
-  } */
   .dsign a{
     color: white;
     font-weight: 500;
@@ -192,7 +189,7 @@
   /* home page*/
   
   .home{
-    background-image: url(../img/cov.jpg);
+    background-image: url('https://cdn.pixabay.com/photo/2016/05/05/11/22/particles-1373684_960_720.jpg');
     height: 80vh;
     background-repeat: no-repeat;
     background-position: center;
