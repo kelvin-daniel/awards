@@ -5,16 +5,15 @@
 {%include 'navbar.html'%}
 <div class="container-fluid">
   <div class="row">
-    <div class="container-fluid text-center pt-4">
+    <div class="container-fluid text-center pt-5">
       {%if profile%}
       {%for i in profile%}
       <div class="container-fluid">
         <div>
-          <span class="btn float-left" style="border-radius: 5px; background-color: #2bbbad;">{{user}}</span>
+          <span class="btn btn-outline-dark float-left" style="border-radius: 25px;">following +0</span>
           <img style="height: 110px; width: 110px;" class="rounded-circle hoverable " src="{{i.profile.url}}" alt="">
           <a class="btn btn-outline-default float-right" href="/logout/">Logout</a>
-        <div class="row mt-4 ml-3 ">Status {{i.bio}}</div>
-          </div>
+        </div>
       </div>
       <br>
       {%endfor%}
@@ -30,8 +29,7 @@
       {%endif%}
       <br>
       <p>{{user.email}}</p>
-
-      <button id='profile' data-toggle="modal" data-target="#modalSubscriptionForm" class="btn btn-default" type="button" name="button" >Update Profile</button>
+      <a data-toggle="modal" data-target="#modalSubscriptionForm" style="border-radius: 25px;" class="btn btn-default" type="button" name="button" >Update Profile</a>
       <div style='color:black' class="modal fade" id="modalSubscriptionForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
       aria-hidden="true">
       <div class="modal-dialog" role="document">

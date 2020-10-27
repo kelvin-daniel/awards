@@ -34,12 +34,12 @@
     </a>
 
     {%if user.is_authenticated%}
-    <a class="mr-4" style="color:rgb(37, 37, 37);"  href="{%url 'profile'%}">{{user}}</a>
-    <img style="height: 32px; width: 32px;" class="rounded-circle hoverable mr-4 " src="{{image.profile.url}}" alt="">
+    <a class="mr-4 font-weight-bold" style="color:rgb(37, 37, 37); text-transform: uppercase;"  href="{%url 'profile'%}">{{user}}</a>
+    <img style="height: 32px; width: 32px;" class="rounded-circle hoverable mr-4 " src="https://assets.awwwards.com/awards/media/cache/thumb_user_70/default/user7.jpg" alt="">
       {%else%}
       <a class="login" href="/accounts/login/">Login/Register </a>
     {%endif%}
-    <a href="{%url 'post'%}" id='submit' style="font-size: 14px;" class="font-weight-bolder bg-default my-2 my-sm-0">Submit Your Site!</a>
+    <a href="{%url 'post'%}" id='submit' style="font-size: 14px;" class="font-weight-bold bg-default my-2 my-sm-0">Submit Your Site!</a>
 
   </div>
 </nav>
