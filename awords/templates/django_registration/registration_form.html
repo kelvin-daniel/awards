@@ -8,17 +8,21 @@
     <img src="https://assets.awwwards.com/assets/images/bg/bg-register.jpg" alt="" style="height: 100vh; width: 100%;">
   </div>
   <div class="col-md-6">
-    <div class="container-fluid pt-5">
+    <div class="container-fluid pt-3">
       <form class="form-group text-center m-3" action="/accounts/register/" method="POST">
         <h5 class="font-weight-bolder">WELCOME TO AWARDS</h5>
         <br>
-        <h5 class="pb-5"><span class="font-weight-bolder float-left">Register with</span>&nbsp;&nbsp;&nbsp;&nbsp; Not a Member Yet? <a
-          href="/accounts/register/" style="color: #49c5b6;">Register Now</a></h5>
+        <h5 class="pb-2"><span class="font-weight-bolder float-left">Register with</span>&nbsp;&nbsp;&nbsp;&nbsp; Are You a Member? <a
+          href="/accounts/login/" class="font-weight-bolder" style="color: #49c5b6;">Login Now</a></h5>
         {%csrf_token%}
         {%bootstrap_form form %}
         <button class="btn btn-default" type="submit" name="button">Register</button>
         <br> <br>
-        <p>Have an account ? Login <a href="/accounts/login/">here</a></p>
+        <div class="box-bottom">
+          © 2020 Awwwards. All rights reserved.<br>
+          By signing up, I agree to Awwwards's<br>
+          <strong><a style="color: #49c5b6;" href="/terms/">Terms of Service</a></strong>
+        </div>
       </form>
     </div>
   </div>
