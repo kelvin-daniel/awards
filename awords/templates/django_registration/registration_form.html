@@ -3,40 +3,26 @@
 
 {{block.super}}
 {%block content%}
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body id="logg">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-          <div class="loggin">
-            <h2>Sign Up</h2>
-            <img height="80"  src="/static/img/log.svg" alt="">
-            <form class="form-group" action="/accounts/register/" method="POST">
-              {%csrf_token%}
-              {%bootstrap_form form %}
-              <button class="btn btn-default" type="submit" name="button">Register</button>
-              <br> <br>
-              <p>Have an account ? Login <a href="/accounts/login/">here</a></p>
-
-            </form>
-          </div>
-
-        </div>
-        <div class="col-md-3"></div>
-
-      </div>
-
-
+<div class="row container-fluid">
+  <div class="col-md-6">
+    <img src="https://assets.awwwards.com/assets/images/bg/bg-register.jpg" alt="" style="height: 100vh; width: 100%;">
+  </div>
+  <div class="col-md-6">
+    <div class="container-fluid pt-5">
+      <form class="form-group text-center m-3" action="/accounts/register/" method="POST">
+        <h5 class="font-weight-bolder">WELCOME TO AWARDS</h5>
+        <br>
+        <h5 class="pb-5"><span class="font-weight-bolder float-left">Register with</span>&nbsp;&nbsp;&nbsp;&nbsp; Not a Member Yet? <a
+          href="/accounts/register/" style="color: #49c5b6;">Register Now</a></h5>
+        {%csrf_token%}
+        {%bootstrap_form form %}
+        <button class="btn btn-default" type="submit" name="button">Register</button>
+        <br> <br>
+        <p>Have an account ? Login <a href="/accounts/login/">here</a></p>
+      </form>
     </div>
-    <br><br>
-  </body>
-</html>
-
+  </div>
+</div>
+<br><br>
 
 {%endblock%}
