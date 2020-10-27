@@ -34,8 +34,8 @@
     </a>
 
     {%if user.is_authenticated%}
-    <img style="height: 42px; width: 42px;" class="rounded-circle hoverable mr-4 " src="{{profile.url}}" alt="">
     <a class="mr-4" style="color:rgb(37, 37, 37);"  href="{%url 'profile'%}">{{user}}</a>
+    <img style="height: 32px; width: 32px;" class="rounded-circle hoverable mr-4 " src="{{image.profile.url}}" alt="">
       {%else%}
       <a class="login" href="/accounts/login/">Login/Register </a>
     {%endif%}
