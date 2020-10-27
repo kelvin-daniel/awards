@@ -5,11 +5,11 @@
 {%include 'navbar.html'%}
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-4 sidePro bg-dark" >
+    <div class="container-fluid text-center pt-4">
       {%if profile%}
       {%for i in profile%}
-      <div class="improfile">
-        <div class="over">
+      <div class="container-fluid">
+        <div>
         <img style="height: 110px; width: 110px;" class="rounded-circle hoverable " src="{{i.profile.url}}" alt="">
         <span class="btn float-right" style="border-radius: 5px; background-color: #2bbbad;">{{user}}</span>
         <div class="row mt-4 ml-3 ">Status {{i.bio}}</div>
@@ -29,10 +29,8 @@
       {%endif%}
       <br>
       <p>{{user.email}}</p>
-
       <p>You have {{projects|length}} Projects</p>
       <a class="btn btn-outline-info" href="/logout/">Logout</a>
-
 
       <button id='profile' data-toggle="modal" data-target="#modalSubscriptionForm" class="btn btn-default" type="button" name="button" >Update Profile</button>
       <div style='color:black' class="modal fade" id="modalSubscriptionForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -46,7 +44,6 @@
             </button>
           </div>
           <div class="modal-body mx-3">
-
             <form class="" action="/user/profile/" method="POST" enctype="multipart/form-data">
               {%csrf_token%}
               {%bootstrap_form form%}
@@ -54,52 +51,43 @@
                 <button type="submit" class="btn btn-default">Update <i class="fas fa-paper-plane-o ml-1"></i></button>
               </div>
             </form>
-
-
-
           </div>
         </div>
       </div>
     </div>
   </div>
-    <div class="col-md-7">
-      <h1>My Projects</h1>
-      <hr>
-      {%if projects%}
-      <div class="row">
-        {%for project in projects%}
-        <div class="col-md-6">
-          <div class="card content">
-            <div class="image">
-                <a class="img" href="/project/{{project.id}}">  <img class="img-fluid" src="{{project.image.url}}" alt=""></a>
-            </div>
-            <div class="check">
-              <i class="dta">{{project.date}}</i>
-              <p>{{project.name}}</p>
-
-              <hr>
-              <div class="">
-                <i class="fas fa-pastafarianism"></i>
-                <i class="far fa-star"></i>
-              </div>
-            </div>
-
+</div>
+<div class="row">
+  <div class="container-fluid text-center">
+    <h4 class="font-weight-bold pt-3">My Projects</h4>
+    {%if projects%}
+    <div class="row">
+      {%for project in projects%}
+      <div class="col-md-6">
+        <div class="card content">
+          <div class="image">
+              <a class="img" href="/project/{{project.id}}">  <img class="img-fluid" src="{{project.image.url}}" alt=""></a>
           </div>
-          <br>
+          <div class="check">
+            <i class="dta">{{project.date}}</i>
+            <p>{{project.name}}</p>
+            <hr>
+            <div class="">
+              <i class="fas fa-pastafarianism"></i>
+              <i class="far fa-star"></i>
+            </div>
+          </div>
         </div>
-
-        {%endfor%}
-
-
+        <br>
       </div>
-      {%else%}
-      <p class="alert alert-info">You have No Projects to display <br>
-      Get started <a href="{%url 'post'%}">Here</a> To get a star</p>
-      {%endif%}
-
+      {%endfor%}
     </div>
-
+    {%else%}
+    <p class="alert alert-info">You have No Projects to display <br>
+    Get started <a href="{%url 'post'%}">Here</a> To get a star</p>
+    {%endif%}
   </div>
+</div>
 
 </div>
 
