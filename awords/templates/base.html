@@ -4,7 +4,6 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>{{title}}</title>
     {%block styles%}
     <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
     <meta name="mobile-web-app-capable" content="yes">
@@ -20,6 +19,8 @@
     <link rel="stylesheet" href="{%static 'css/mdb.css'%}">
     <link  href="{%static 'css/style.css'%}" rel="stylesheet">
     <link rel="icon" href="{%static 'img/in.png'%}">
+    <link rel="icon" href="https://mir-s3-cdn-cf.behance.net/projects/404/8d6ca296747103.Y3JvcCw4MDgsNjMyLDAsMA.jpg">
+    <title>awwwards</title>
     {%endblock%}
   </head>
   <body>
@@ -40,6 +41,11 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script src="{%static 'js/main.js'%}" type="text/javascript"></script>
+    <script type="text/javascript">
+    var newDate = new Date();
+    newDate.setDate(newDate.getDate() + 1);
+    $('#displayDate').html((newDate.getMonth() + 1) + '.' + newDate.getDate() + '.' + newDate.getFullYear());
+    </script>
     {%endblock%}
 
   </body>

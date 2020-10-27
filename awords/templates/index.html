@@ -2,18 +2,57 @@
 
 {{block.super}}
 {%block content%}
-<div class="home">
+<div class="home" style="height: 80vh;">
 <div class="overly">
-  <br><br><br>
-  <h4 id="awa">Awwwards</h4>
-  <p>Home of innovation and Ideas </p>
-    <button class="btn btn-outline-default" type="button" name="button">Jquery</button>
-    <button class="btn btn-outline-danger" type="button" name="button">Css3</button>
-    <button class="btn btn-outline-primary" type="button" name="button">Javascript</button>
-    <button class="btn btn-outline-secondary" type="button" name="button">UI</button>
-    <button class="btn btn-outline-info" type="button" name="button">Material Design</button><br>
-    <button class="btn btn-outline-success" type="button" name="button">Bootstrap</button>
-    <button class="btn btn-outline-light" type="button" name="button">SweetAlert</button>
+  {%for i in projects%}
+<div style="background-image:url({{i.image.url}});" class=" single">
+  <div class="overlay">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <a id='visit' class="btn btn-outline-default bg-default" href="{{i.link}}">Visit site</a>
+        </div>
+        <div class="col-md-6">
+          <h1 class="hed">{{i.name}}</h1>
+          <p class="i">by <b class='b'>{{i.user}} </b> with a Rating of <strong> {{average}}</strong></p>
+          <div class="design">
+
+              <a target="_blank"  href="{{i.link}}">{{design}}</a>
+              <i id="de">design</i>
+              <a target="_blank" href="{{i.link}}">{{usability}}</a>
+              <i id="us">usability</i>
+              <a target="_blank" class='b' href="{{i.link}}">{{content}}</a>
+              <i  id="con">content</i>
+
+          </div>
+
+        </div>
+        <div class="col-md-3">
+          {%if user.is_authenticated%}
+
+          <button id='love' class="btn btn-outline-default" type="button" name="button">Rate</button>
+          {%if user.id   not in   auth   %}
+          <br>
+          <div class="form animated fadeIn">
+            <form id='send' class="" action="/project/{{i.id}}/" method="post">
+              {%csrf_token%}
+              {%bootstrap_form form%}
+              <button class="btn btn-outline-default" type="submit" name="button">Submit</button>
+            </form>
+
+          </div>
+          {%else%}
+          <p class="alert alert-info">Thank You for  Rating This app</p>
+          {%endif%}
+          {%else%}
+            <a href="/accounts/login/"><button class="btn btn-outline-default" type="button" name="button">Login to rate</button></a>
+          {%endif%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{%endfor%}
 </div>
 </div>
 <br>
