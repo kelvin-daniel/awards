@@ -4,12 +4,14 @@
 {{block.super}}
 {%block content%}
 {%include 'navbar.html'%}
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
-        <div class="col-md-3"></div>
+        <div class="col-md-3">
+          <img src="https://assets.awwwards.com/awards/images/2020/09/moooi_thumb.jpg" alt="" style="height: 100vh; width: 100%;">
+        </div>
         <div class="col-md-6">
-          <div class="loggi">
-            <h2>Submit Your Project</h2>
+          <div class="container-fluid font-weight-bolder">
+            <h2 class="text-center font-weight-bold pb-4 pt-5">Project Submission</h2>
               <form class="form-group" action="/project/post/" method="POST" enctype="multipart/form-data">
               {%csrf_token%}
               {%bootstrap_form form%}
