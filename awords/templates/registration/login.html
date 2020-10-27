@@ -12,8 +12,8 @@
       <form class="form-group m-3" action="/accounts/login/" method="POST">
         <h5 class="font-weight-bolder">WELCOME TO AWARDS</h5>
         <br>
-        <h5 class="pb-5"><span class="font-weight-bolder float-left">Sign in to continue</span>&nbsp;&nbsp;&nbsp;&nbsp; Not a Member Yet? <a
-          href="/accounts/register/" style="color: #49c5b6;">Register Now</a></h5>
+        <h5 class="pb-5"><span class="font-weight-bold float-left">Sign in to continue</span>&nbsp;&nbsp;&nbsp;&nbsp; Not a Member Yet? <a
+          href="/accounts/register/" class="font-weight-bold" style="color: #49c5b6;">Register Now</a></h5>
         {%csrf_token%}
         {%bootstrap_form form%}
         <button class="btn btn-default width-full" type="submit" name="button">Login</button>
