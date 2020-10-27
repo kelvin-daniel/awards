@@ -30,7 +30,6 @@
       {%endif%}
       <br>
       <p>{{user.email}}</p>
-      <p>You have {{projects|length}} Projects</p>
 
       <button id='profile' data-toggle="modal" data-target="#modalSubscriptionForm" class="btn btn-default" type="button" name="button" >Update Profile</button>
       <div style='color:black' class="modal fade" id="modalSubscriptionForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -59,7 +58,7 @@
 </div>
 <div class="row">
   <div class="container-fluid text-center">
-    <h4 class="font-weight-bold pt-3">My Projects</h4>
+    <h4 class="font-weight-bold pt-3">Submitted Sites</h4>
     {%if projects%}
     <div class="row">
       {%for project in projects%}
@@ -83,8 +82,7 @@
       {%endfor%}
     </div>
     {%else%}
-    <p class="alert alert-info">You have No Projects to display <br>
-    Get started <a href="{%url 'post'%}">Here</a> To get a star</p>
+    <p class="alert alert-info">You have {{projects|length}} Projects</p>
     {%endif%}
   </div>
 </div>
