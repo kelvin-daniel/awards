@@ -3,22 +3,27 @@
 
 {{block.super}}
 {%block content%}
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-6">
-      <img src="https://assets.awwwards.com/assets/images/bg/bg-login.jpg" alt="" style="height: 100vh; width: 100%;">
-    </div>
-    <div class="col-md-6">
-      <div class="loggin">
-        <h2>Login</h2>
-        <form class="form-group" action="/accounts/login/" method="POST">
-          {%csrf_token%}
-          {%bootstrap_form form%}
-          <button class="btn btn-default" type="submit" name="button">Login</button>
-          <br> <br>
-          <p>Dont have an account ? register <a href="/accounts/register/">here</a></p>
-        </form>
+<div class="row container-fluid">
+  <div class="col-md-6">
+    <img src="https://assets.awwwards.com/assets/images/bg/bg-login.jpg" alt="" style="height: 100vh; width: 100%;">
+  </div>
+  <div class="col-md-6">
+    <div class="container-fluid pt-5  text-center">
+      <form class="form-group m-3" action="/accounts/login/" method="POST">
+        <h5 class="font-weight-bolder">WELCOME TO AWARDS</h5>
+        <br>
+        <h5 class="pb-5"><span class="font-weight-bolder float-left">Sign in to continue</span>&nbsp;&nbsp;&nbsp;&nbsp; Not a Member Yet? <a
+          href="/accounts/register/" style="color: #49c5b6;">Register Now</a></h5>
+        {%csrf_token%}
+        {%bootstrap_form form%}
+        <button class="btn btn-default width-full" type="submit" name="button">Login</button>
+        <br> <br>
+        <div class="box-bottom pt-5">
+          © 2020 Awwwards. All rights reserved.<br>
+          By signing up, I agree to Awwwards's<br>
+          <strong><a style="color: #49c5b6;" href="/terms/">Terms of Service</a></strong>
       </div>
+      </form>
     </div>
   </div>
 </div>
