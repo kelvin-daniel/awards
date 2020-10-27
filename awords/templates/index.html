@@ -2,34 +2,42 @@
 
 {{block.super}}
 {%block content%}
-<div class="home" style="height: 80vh;">
+<div class="home flex-grid" style="height: 80vh;">
 <div class="overly">
   <h5 class="float-left pl-5 pt-5 text-white"><span class="font-weight-bolder">Site of the Day</span> &nbsp;<span id="displayDate"></span></h5>
-  <div class="container">
     <div class="row">
       <div class="col-md-2">
       </div>
       <div class="col-md-6 ml-5" style="margin-top: 150px;">
         <h2 class="">name</h2>
         <p style="font-size: 14px;" class="i">by &nbsp;<b class='b'>kelvin&nbsp;</b> Rated&nbsp;  at&nbsp;  <strong> 9.0</strong></p>
-        <div class="design">
-          <a target="_blank"  href="{{i.link}}">9.5</a>
-          <i id="de">design</i>
-          <a target="_blank" href="{{i.link}}">9.0</a>
-          <i id="us">usability</i>
-          <a target="_blank" class='b' href="{{i.link}}">8.5</a>
-          <i  id="con">content</i>
+        <div class="design row ml-5">
+          <div>
+            <a target="_blank"  href="{{i.link}}">9.5</a>
+            <i id="de">design</i>
+          </div>
+          <div>
+            <a target="_blank" href="{{i.link}}">9.0</a>
+            <i id="us">usability</i>
+          </div>
+          <div>
+            <a target="_blank" class='b' href="{{i.link}}">8.5</a>
+            <i  id="con">content</i>
+          </div>
+          <div>
+            <a target="_blank" class='b' href="{{i.link}}">8.5</a>
+            <i  id="con">content</i>
+          </div>
         </div>
       </div> 
     </div>
   </div>
+  <div class="row">
+    <a class="btn btn-default bg-default ml-5 font-weight-bolder" style="text-transform: lowercase; font-size: 14px; border-radius: 25px;" href="{{i.link}}">Visit site</a>
+    <a class="btn btn-outline-white bg-default ml-3 font-weight-bolder" style="text-transform: lowercase; font-size: 14px; border-radius: 25px;" href="{{i.link}}">Collect</a>
+  </div>
 </div>
-<div class="row">
-  <a class="btn btn-default bg-default ml-5 font-weight-bolder" style="text-transform: lowercase; font-size: 14px; border-radius: 25px;" href="{{i.link}}">Visit site</a>
-  <a class="btn btn-default bg-default ml-5 font-weight-bolder" style="text-transform: lowercase; font-size: 14px; border-radius: 25px;" href="{{i.link}}">Collect</a>
 </div>
-</div>
-<br>
 <div class="container-fluid">
   <div class="row">
     {%for project in projects%}
