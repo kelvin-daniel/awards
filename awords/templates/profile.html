@@ -10,8 +10,9 @@
       {%for i in profile%}
       <div class="container-fluid">
         <div>
-        <img style="height: 110px; width: 110px;" class="rounded-circle hoverable " src="{{i.profile.url}}" alt="">
-        <span class="btn float-right" style="border-radius: 5px; background-color: #2bbbad;">{{user}}</span>
+          <span class="btn float-left" style="border-radius: 5px; background-color: #2bbbad;">{{user}}</span>
+          <img style="height: 110px; width: 110px;" class="rounded-circle hoverable " src="{{i.profile.url}}" alt="">
+          <a class="btn btn-outline-default float-right" href="/logout/">Logout</a>
         <div class="row mt-4 ml-3 ">Status {{i.bio}}</div>
           </div>
       </div>
@@ -30,7 +31,6 @@
       <br>
       <p>{{user.email}}</p>
       <p>You have {{projects|length}} Projects</p>
-      <a class="btn btn-outline-info" href="/logout/">Logout</a>
 
       <button id='profile' data-toggle="modal" data-target="#modalSubscriptionForm" class="btn btn-default" type="button" name="button" >Update Profile</button>
       <div style='color:black' class="modal fade" id="modalSubscriptionForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
