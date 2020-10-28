@@ -138,8 +138,8 @@
         <form class="" action="/project/{{j.id}}/"  style="font-size: 16px; border-radius: 25px;" method="post" aria-placeholder="Start the discussion">
           {%csrf_token%}
           {%bootstrap_form review%}
+          <button id='area' class="btn btn-outline-dark mr-5" style=" border-radius: 25px;" type="submit" name="button">Comment</button>
         </form>
-        <button id='area' class="btn btn-outline-dark mr-5" style=" border-radius: 25px;" type="submit" name="button">Comment</button>
         {%endfor%}
         {%else%}
         <a href="/accounts/login/"><button class="btn btn-outline-dark" style=" border-radius: 25px;" type="submit" name="button">Sign in To leave a comment</button></a>
@@ -150,7 +150,7 @@
           <p class="font-weight-bold text-center" id='om'>comments</p>
           <hr class="font-weight-bold">
           {%for con in comments%}
-          <p><i class="font-weight-bold p-3">@{{con.user}}</i> {{con.comment}}</p>
+          <p><i class="font-weight-bold p-3" style="font-style: normal;">@{{con.user}}::</i> {{con.comment}}</p>
           {%endfor%}
         </div>
       </div>
