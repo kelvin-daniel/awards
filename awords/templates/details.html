@@ -2,24 +2,25 @@
 {%load bootstrap4%}
 {{block.super}}
 {%block content%}
+{%include 'navbar.html'%}
 {%for i in projects%}
 <div style="background-image:url({{i.image.url}});" class=" single">
   <div class="overlay">
     <div class="container">
       <div class="row">
         <div class="col-md-3">
-          <a id='visit' class="btn btn-outline-default bg-default" href="{{i.link}}">Visit site</a>
+          <a id='visit' class="btn btn-outline-default bg-default" target="blank" href="{{i.url}}">Visit site</a>
         </div>
         <div class="col-md-6">
-          <h1 class="hed">{{i.name}}</h1>
+          <h1 class="hed">{{i.sitename}}</h1>
           <p class="i">by <b class='b'>{{i.user}} </b> with a Rating of <strong> {{average}}</strong></p>
           <div class="design">
 
-              <a target="_blank"  href="{{i.link}}">{{design}}</a>
+              <a target="_blank"  href="{{i.url}}">{{design}}</a>
               <i id="de">design</i>
-              <a target="_blank" href="{{i.link}}">{{usability}}</a>
+              <a target="_blank" href="{{i.url}}">{{usability}}</a>
               <i id="us">usability</i>
-              <a target="_blank" class='b' href="{{i.link}}">{{content}}</a>
+              <a target="_blank" class='b' href="{{i.url}}">{{content}}</a>
               <i  id="con">content</i>
 
           </div>

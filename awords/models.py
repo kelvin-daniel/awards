@@ -6,26 +6,26 @@ from cloudinary.models import CloudinaryField
 # Create your models here.
 
 class Projects(models.Model):
-    name=models.CharField(max_length=30)
+    sitename=models.CharField(max_length=30)
     image=CloudinaryField('image', null=True)
     design=models.IntegerField(default=0)
     usability=models.IntegerField(default=0)
     content=models.IntegerField(default=0)
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     description=models.TextField(max_length=320)
-    link=models.URLField(max_length=60)
+    url=models.URLField(max_length=60)
     date=models.DateField(auto_now=True)
     screen1=CloudinaryField('image', null=True)
     screen2=CloudinaryField('image', null=True)
 
     class Meta:
-        ordering=['-name']
+        ordering=['-sitename']
 
     def __str__(self):
-        self.name
+        self.sitename
     @classmethod
     def search_project(cls,word):
-        searched=cls.objects.filter(name__icontains=word)
+        searched=cls.objects.filter(sitename__icontains=word)
         return searched
 
 class Profile(models.Model):

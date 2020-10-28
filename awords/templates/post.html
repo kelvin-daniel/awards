@@ -1,6 +1,6 @@
 {%extends 'base.html'%}
 {%load bootstrap4%}
-
+{% load crispy_forms_tags %}
 {{block.super}}
 {%block content%}
 {%include 'navbar.html'%}
@@ -14,7 +14,7 @@
             <h2 class="text-center font-weight-bold pb-4 pt-5">Project Submission</h2>
               <form class="form-group" action="/project/post/" method="POST" enctype="multipart/form-data">
               {%csrf_token%}
-              {%bootstrap_form form%}
+              {{ form|crispy }}
               <button class="btn btn-default" type="submit" name="button">Submit Project</button>
               <br> <br>
             </form>
