@@ -16,11 +16,11 @@
           <h1 class="font-weight-bold text-center text-white hed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;margin-top: 80px;">{{i.sitename}}</h1>
           <h5 class="font-weight-bolder i p-3">by <b class='b'>{{i.user}} </b> from <b>{%if i.location%}{{i.location}}{%else%}Earth{%endif%}</b> with<strong> {{average}}</strong></h5>
           <div id="desgn" class="design">
-              <a target="_blank" class="font-weight-bold" style="font-size: 18px; border: solid rgb(255, 102, 0) 3px;" href="{{i.url}}">{{design}}</a>
+              <a target="_blank" class="font-weight-bold" style="font-size: 18px; border: solid rgb(247, 147, 80) 4px;" href="{{i.url}}">{{design}}</a>
               <i id="de" class="font-weight-bold" style="font-family: -apple-system; font-style: normal;">design</i>
-              <a target="_blank" class="font-weight-bold" style="font-size: 18px; border: solid rgb(0, 255, 106) 3px;" href="{{i.url}}">{{usability}}</a>
+              <a target="_blank" class="font-weight-bold" style="font-size: 18px; border: solid rgb(100, 241, 159) 3px;" href="{{i.url}}">{{usability}}</a>
               <i id="us" class="font-weight-bold" style="font-family: -apple-system; font-style: normal;">usability</i>
-              <a target="_blank" class="font-weight-bold" style="font-size: 18px; border: solid rgb(103, 160, 224) 3px;" class='b' href="{{i.url}}">{{content}}</a>
+              <a target="_blank" class="font-weight-bold" style="font-size: 18px; border: solid rgb(127, 187, 255) 3px;" class='b' href="{{i.url}}">{{content}}</a>
               <i  id="con" class="font-weight-bold" style="font-family: -apple-system; font-style: normal;">content</i>
           </div>
         </div>
@@ -113,9 +113,9 @@
               <tr>
                 <td style="font-size: 16px;">{{us.user}}</td>
                 <td>  <div class="dsign float-right mr-5">
-                      <a style="font-size: 18px;" href="">{{us.design}}.0</a>
-                      <a style="font-size: 18px;" href="">{{us.usability}}.0</a>
-                      <a style="font-size: 18px;" class='b' href="">{{us.content}}.0</a>
+                      <a style="font-size: 18px; border: solid rgb(235, 143, 101) 3px;" href="">{{us.design}}.0</a>
+                      <a style="font-size: 18px; border: solid rgb(114, 236, 165) 3px;" href="">{{us.usability}}.0</a>
+                      <a style="font-size: 18px; border: solid rgb(128, 228, 241) 3px;" class='b' href="">{{us.content}}.0</a>
                       <span class="ml-5 font-weight-bold" style="font-size: 26px;">{{average}}</span>
                   </div>
                 </td>
@@ -123,7 +123,7 @@
               {%endfor%}
             </table>
             {%else%}
-            <li class="list-group-item alert alert-info">No votes Available</li>
+            <li class="list-group-item alert alert-info">No votes Yet. <button id='love' class="btn btn-outline-default mt-5" type="button" name="button">Rate</button></li>
             {%endif%}
           </ul>
         </div>
@@ -146,7 +146,7 @@
         {%endif%}
       </div>
       <div class="col-md-4">
-        <div class="mt-4" style="font-size: 16px; border-radius: 15px; border: solid rgb(111, 193, 196);" >
+        <div class="mt-4" style="font-size: 16px; border-radius: 15px; border: solid rgb(148, 227, 230);" >
           <p class="font-weight-bold text-center" id='om'>comments</p>
           <hr class="font-weight-bold">
           {%for con in comments%}
