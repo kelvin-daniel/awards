@@ -7,7 +7,7 @@ from cloudinary.models import CloudinaryField
 
 class Projects(models.Model):
     name=models.CharField(max_length=30)
-    image=models.ImageField(upload_to='images/', verbose_name='Picture', null=False)
+    image=CloudinaryField('image', null=True)
     design=models.IntegerField(default=0)
     usability=models.IntegerField(default=0)
     content=models.IntegerField(default=0)
@@ -15,8 +15,8 @@ class Projects(models.Model):
     description=models.TextField(max_length=320)
     link=models.URLField(max_length=60)
     date=models.DateField(auto_now=True)
-    screen1=models.ImageField(upload_to='images/', verbose_name='Picture', blank=True)
-    screen2=models.ImageField(upload_to='images/', verbose_name='Picture', blank=True)
+    screen1=CloudinaryField('image', null=True)
+    screen2=CloudinaryField('image', null=True)
 
     class Meta:
         ordering=['-name']
@@ -36,14 +36,17 @@ class Profile(models.Model):
     class Meta:
         ordering=['-profile']
 
-class Rates(models.Model):
-    design=models.PositiveIntegerField(default=0,validators=[MaxValueValidator(10)])
-    usability=models.PositiveIntegerField(default=0,validators=[MaxValueValidator(10)])
-    content=models.PositiveIntegerField(default=0,validators=[MaxValueValidator(10)])
-    user=models.ForeignKey(User,on_delete=models.CASCADE)
-    project=models.IntegerField(default=0)
-
 class Comments(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     comment=models.TextField(max_length=200)
     pro_id=models.IntegerField(default=0)
+
+class Rates(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    project=models.IntegerField(default=0)
+    design=models.PositiveIntegerField(default=0,validators=[MaxValueValidator(10)])
+    usability=models.PositiveIntegerField(default=0,validators=[MaxValueValidator(10)])
+    content=models.PositiveIntegerField(default=0,validators=[MaxValueValidator(10)])
+    
+
+
