@@ -178,4 +178,4 @@ def apiView(request):
     current_user=request.user
     title="Api|Developers"
     profis=Profile.objects.filter(user=current_user)[0:1]
-    return render(request,'api.html',{"title":title,'profile':profis})
+    return render(request,'developer.html',{"title":title,'profile':profis})
