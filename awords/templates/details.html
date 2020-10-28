@@ -9,7 +9,7 @@
   <div class="overlay">
     <div class="container">
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 mt-5">
           <a id='visit' class="btn btn-outline-default bg-default" target="blank" href="{{i.url}}">Visit site</a>
         </div>
         <div class="col-md-6">
@@ -27,7 +27,7 @@
         <div class="col-md-3">
           {%if user.is_authenticated%}
 
-          <button id='love' class="btn btn-outline-default" type="button" name="button">Rate</button>
+          <button id='love' class="btn btn-outline-default mt-5" type="button" name="button">Rate</button>
           {%if user.id   not in   auth   %}
           <br>
           <div class="form animated fadeIn">

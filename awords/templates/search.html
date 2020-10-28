@@ -10,24 +10,20 @@
         <div class="col-md-2">
         </div>
         <div class="col-md-6" style="margin-top: 120px;">
-          <h2 class="text-white font-weight-bold">name</h2>
+          <h2 class="text-white font-weight-bold">splash.</h2>
           <p style="font-size: 14px;" class="i">by &nbsp;<b class='b'>kelvin&nbsp;</b> Rated&nbsp;  at&nbsp;  <strong> 9.0</strong></p>
-          <div class="design row ml-5 pt-4">
+          <div class="design row ml-5 pl-5 pt-4">
             <div>
-              <a target="_blank"  href="{{i.link}}">9.5</a>
-              <i id="de">design</i>
+              <a target="_blank" class="font-weight-bold" style="font-size: 18px;" href="{{i.link}}">9.5</a>
+              <i class="font-weight-bold" style="font-family: -apple-system; font-style: normal;" id="de">design</i>
             </div>
             <div>
-              <a target="_blank" href="{{i.link}}">9.0</a>
-              <i id="us">usability</i>
+              <a target="_blank" class="font-weight-bold" style="font-size: 18px;" href="{{i.link}}">9.0</a>
+              <i class="font-weight-bold" style="font-family: -apple-system; font-style: normal;" id="us">usability</i>
             </div>
             <div>
-              <a target="_blank" class='b' href="{{i.link}}">8.5</a>
-              <i  id="con">content</i>
-            </div>
-            <div>
-              <a target="_blank" class='b' href="{{i.link}}">8.5</a>
-              <i  id="con">content</i>
+              <a target="_blank" class="font-weight-bold" style="font-size: 18px;" class='b' href="{{i.link}}">8.5</a>
+              <i class="font-weight-bold" style="font-family: -apple-system; font-style: normal;"  id="con">content</i>
             </div>
           </div>
         </div> 
@@ -43,14 +39,13 @@
 <div class="container-fluid">
   <div class="col-md-6">
     {%if projects%}
-      <h3>Found {{projects|length}}</h3>
+      <h3 class="font-weight-bold mt-5">Found {{projects|length}}</h3>
       {%else%}
-      <h3>Found {{projects|length}} Related results</h3><br>
-      <p class="alert alert-info">No result found</p>
-      <ul class="list-group">
-        <li class="list-group-item">Try using English</li>
-        <li class="list-group-item">Try using Words like Marine, Bozar</li>
-        <li class="list-group-item">Use key words Dont type too much</li>
+      <h3 class="font-weight-bold mt-5">Found {{projects|length}} Related results</h3><br>
+      <p class="alert alert-info text-center">No result found</p>
+      <ul class="list-group text-center">
+        <li class="list-group-item">Search in English</li>
+        <li class="list-group-item">Use key words to Search</li>
 
       </ul>
       {%endif%}
@@ -60,7 +55,7 @@
     <div class="col-md-4">
       <div class="card content">
         <div class="image">
-            <a class="img" href="/project/{{project.id}}">  <img class="img-fluid" src="{{project.image.url}}" alt=""></a>
+            <a class="img" href="/project/{{project.id}}">  <img class="img-fluid mt-4" src="{{project.image.url}}" alt=""></a>
         </div>
         <div class="check">
           <i class="dta">{{project.date}}</i>

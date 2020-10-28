@@ -10,24 +10,20 @@
       <div class="col-md-2">
       </div>
       <div class="col-md-6" style="margin-top: 120px;">
-        <h2 class="text-white font-weight-bold">name</h2>
+        <h2 class="text-white font-weight-bold">Splash.</h2>
         <p style="font-size: 14px;" class="i">by &nbsp;<b class='b'>kelvin&nbsp;</b> Rated&nbsp;  at&nbsp;  <strong> 9.0</strong></p>
-        <div class="design row ml-5 pt-4">
+        <div class="design row ml-5 pl-5 pt-4">
           <div>
-            <a target="_blank"  href="{{i.link}}">9.5</a>
-            <i id="de">design</i>
+            <a target="_blank" class="font-weight-bold" style="font-size: 18px;" href="{{i.link}}">9.5</a>
+            <i class="font-weight-bold" style="font-family: -apple-system; font-style: normal;" id="de">design</i>
           </div>
           <div>
-            <a target="_blank" href="{{i.link}}">9.0</a>
-            <i id="us">usability</i>
+            <a target="_blank" class="font-weight-bold" style="font-size: 18px;" href="{{i.link}}">9.0</a>
+            <i class="font-weight-bold" style="font-family: -apple-system; font-style: normal;" id="us">usability</i>
           </div>
           <div>
-            <a target="_blank" class='b' href="{{i.link}}">8.5</a>
-            <i  id="con">content</i>
-          </div>
-          <div>
-            <a target="_blank" class='b' href="{{i.link}}">8.5</a>
-            <i  id="con">content</i>
+            <a target="_blank" class="font-weight-bold" style="font-size: 18px;" class='b' href="{{i.link}}">8.5</a>
+            <i class="font-weight-bold" style="font-family: -apple-system; font-style: normal;"  id="con">content</i>
           </div>
         </div>
       </div> 
@@ -39,7 +35,15 @@
   </div>
 </div>
 </div>
-<div class="container-fluid">
+<div class="row">
+  <div class="col-md-8">
+    <h5 class="float-left pl-5 pt-5 text-dark"><span class="font-weight-bold">Site of the Day</span> &nbsp;<span> Previous Winners</span></h5>
+  </div>
+  <div class="coml-md-4">
+    <h5 class="float-right pl-5 pt-5 text-dark"><span class="font-weight-bold">Mobile Exellence</span> &nbsp;<span> Site of the Week</span></h5>
+  </div>
+</div>
+<div class="container-fluid mt-5">
   <div class="row">
     {%for project in projects%}
     <div class="col-md-4">
@@ -47,14 +51,9 @@
         <div class="image">
             <a class="img" href="/project/{{project.id}}">  <img class="img-fluid" src="{{project.image.url}}" alt=""></a>
         </div>
-        <div class="check">
+        <div class="">
           <i class="dta">{{project.date}}</i>
-          <p>{{project.name}}</p>
-          <hr>
-          <div class="">
-            <i class="fas fa-pastafarianism"></i>
-            <p>by {{project.user}}</p>
-          </div>
+          <p class="font-weight-bold">{{project.sitename}}</p>
         </div>
       </div>
       <br>
