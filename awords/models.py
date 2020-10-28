@@ -14,6 +14,7 @@ class Projects(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     description=models.TextField(max_length=320)
     url=models.URLField(max_length=60)
+    location = models.CharField(max_length=60, blank=True)
     date=models.DateField(auto_now=True)
     screen1=CloudinaryField('image', null=True)
     screen2=CloudinaryField('image', null=True)

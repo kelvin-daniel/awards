@@ -1,4 +1,5 @@
 {%extends 'base.html'%}
+{% load crispy_forms_tags %}
 {%load bootstrap4%}
 {{block.super}}
 {%block content%}
@@ -12,19 +13,16 @@
           <a id='visit' class="btn btn-outline-default bg-default" target="blank" href="{{i.url}}">Visit site</a>
         </div>
         <div class="col-md-6">
-          <h1 class="font-weight-bold">{{i.sitename}}</h1>
-          <p class="i">by <b class='b'>{{i.user}} </b> with a Rating of <strong> {{average}}</strong></p>
+          <h1 class="font-weight-bold hed" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">{{i.sitename}}</h1>
+          <h5 class="font-weight-bolder i p-3">by <b class='b'>{{i.user}} </b> from <b>{%if i.location%}{{i.location}}{%else%}Earth{%endif%}</b> with<strong> {{average}}</strong></h5>
           <div class="design">
-
-              <a target="_blank"  href="{{i.url}}">{{design}}</a>
-              <i id="de">design</i>
-              <a target="_blank" href="{{i.url}}">{{usability}}</a>
-              <i id="us">usability</i>
-              <a target="_blank" class='b' href="{{i.url}}">{{content}}</a>
-              <i  id="con">content</i>
-
+              <a target="_blank" class="font-weight-bold" style="font-size: 18px;" href="{{i.url}}">{{design}}</a>
+              <i id="de" class="font-weight-bold" style="font-family: -apple-system; font-style: normal;">design</i>
+              <a target="_blank" class="font-weight-bold" style="font-size: 18px;" href="{{i.url}}">{{usability}}</a>
+              <i id="us" class="font-weight-bold" style="font-family: -apple-system; font-style: normal;">usability</i>
+              <a target="_blank" class="font-weight-bold" style="font-size: 18px;" class='b' href="{{i.url}}">{{content}}</a>
+              <i  id="con" class="font-weight-bold" style="font-family: -apple-system; font-style: normal;">content</i>
           </div>
-
         </div>
         <div class="col-md-3">
           {%if user.is_authenticated%}
@@ -35,13 +33,13 @@
           <div class="form animated fadeIn">
             <form id='send' class="" action="/project/{{i.id}}/" method="post">
               {%csrf_token%}
-              {%bootstrap_form form%}
+              {{ form|crispy }}
               <button class="btn btn-outline-default" type="submit" name="button">Submit</button>
             </form>
 
           </div>
           {%else%}
-          <p class="alert alert-info">Thank You for  Rating This app</p>
+          <p class="alert alert-info">You've voted!</p>
           {%endif%}
           {%else%}
             <a href="/accounts/login/"><button class="btn btn-outline-default" type="button" name="button">Login to rate</button></a>
@@ -49,9 +47,6 @@
         </div>
       </div>
     </div>
-
-
-
   </div>
 </div>
 {%endfor%}
@@ -61,36 +56,31 @@
     {%for project in projects%}
     <div class="col-md-8">
       <br>
-      <p class="head">{{project.description}}</p>
+      <p class="head pt-5">{{project.description}}</p>
       <div class="overl">
+          <button class="btn btn-outline-dark" type="button" name="button">HTML</button>
           <button class="btn btn-outline-dark" type="button" name="button">Jquery</button>
-          <button class="btn btn-outline-dark" type="button" name="button">Css3</button>
+          <button class="btn btn-outline-dark" type="button" name="button">Css</button>
           <button class="btn btn-outline-dark" type="button" name="button">Javascript</button>
-          <button class="btn btn-outline-dark" type="button" name="button">UI</button>
-          <button class="btn btn-outline-dark" type="button" name="button">Material Design</button><br>
+          <button class="btn btn-outline-dark" type="button" name="button">Material Design</button>
           <button class="btn btn-outline-dark" type="button" name="button">Bootstrap</button>
-          <button class="btn btn-outline-dark" type="button" name="button">SweetAlert</button>
+          <button class="btn btn-outline-dark" type="button" name="button">Django</button>
           <button class="btn btn-outline-dark" type="button" name="button">Bootstrap</button>
-          <button class="btn btn-outline-dark" type="button" name="button">Touch</button>
-          <button class="btn btn-outline-dark" type="button" name="button">Design</button>
-          <button class="btn btn-outline-dark" type="button" name="button">Animation</button>
-          <button class="btn btn-outline-dark" type="button" name="button">Machine AI</button>
-          <button class="btn btn-outline-dark" type="button" name="button">Graphics</button>
-
+          <button class="btn btn-outline-dark" type="button" name="button">Python</button>
       </div>
       <br>
-
     </div>
     {%endfor%}
     <div class="col-md-2"></div>
-
   </div>
-  <hr class="bg-default">
-  <div class="row">
-    <div class="col-md-12">
+  <hr>
+  <div class="row mt-5">
+    <div class="col-md-12 mb-5" style="font-size: 16px;">
       <div class="links">
         <a href="#shots">Screenshot</a>
+        &nbsp;.&nbsp;
         <a href="#comm">Votes</a>
+        &nbsp;.&nbsp;
           <a href="#om">Comments</a>
       </div>
     </div>
@@ -111,77 +101,59 @@
 
       <div class="card comments">
         <div class="card-header">
-          <h4> Votes Award users {{all|length}} </h4>
+          <h4 class="font-weight-bold">{{all|length}} Judges</h4>
         </div>
         <div class="list-group">
           <ul class="list-group">
             {%if all%}
-
-            <table id='comm' class="table">
-              <th>Voters</th>
-              <th>Rating</th>
-              <th>Stars</th>
+            <table id='comm' class="table" style="font-size: 16px;">
+              <th class="font-weight-bolder" style="font-size: 16px;">Jury</th>
+              <th class=" font-weight-bold mr-5 float-right" style="font-size: 16px;">Rating</th>
               {%for us in all%}
               <tr>
-
-                <td>{{us.user}}</td>
-                <td>  <div class="dsign">
-                      <a href="">{{us.design}}.0</a>
-                      <a href="">{{us.usability}}.0</a>
-                      <a class='b' href="">{{us.content}}.0</a>
-
-
-                  </div></td>
-
-                  <td><b class="tt"><i style="color:red" class="far fa-star "></i><i  style="color:red" class="far fa-star"></i><i class="far fa-star"></i></b></td>
+                <td style="font-size: 16px;">{{us.user}}</td>
+                <td>  <div class="dsign float-right mr-5">
+                      <a style="font-size: 18px;" href="">{{us.design}}.0</a>
+                      <a style="font-size: 18px;" href="">{{us.usability}}.0</a>
+                      <a style="font-size: 18px;" class='b' href="">{{us.content}}.0</a>
+                      <span class="ml-5 font-weight-bold" style="font-size: 26px;">{{average}}</span>
+                  </div>
+                </td>
               </tr>
               {%endfor%}
-
             </table>
-
             {%else%}
             <li class="list-group-item alert alert-info">No votes Available</li>
-
             {%endif%}
           </ul>
-
         </div>
-
       </div>
-
     </div>
-
   </div>
     <br><br>
   <div class="row">
-    <div class="col-md-2"></div>
-      <div class="col-md-8">
-        <div class="ments">
-          <p id='om'>comments <i class="far fa-comments"></i></p>
-          <hr>
-          {%if comments%}
-          {%for con in comments%}
-          <p> <i class="fas fa-quote-left"></i>{{con.comment}}</p>
-          <i>by -- {{con.user}}</i>
-          {%endfor%}
-          {%else%}
-          <p class="alert alert-info">Be the 1st to comment</p>
-          {%endif%}
-        </div>
+      <div class="col-md-8 font-weight-bolder">
         {%if user.is_authenticated%}
         {%for j in projects%}
-        <form class="" action="/project/{{j.id}}/" method="post">
+        <form class="" action="/project/{{j.id}}/"  style="font-size: 16px;" method="post" aria-placeholder="Start the discussion">
           {%csrf_token%}
           {%bootstrap_form review%}
-          <button id='area' class="btn btn-outline-default" type="submit" name="button">Comment</button>
         </form>
+        <button id='area' class="btn btn-outline-dark mr-5" type="submit" name="button">Comment</button>
         {%endfor%}
         {%else%}
-        <a href="/accounts/login/"><button class="btn btn-outline-default" type="submit" name="button">Sign in To leave a comment</button></a>
+        <a href="/accounts/login/"><button class="btn btn-outline-dark" type="submit" name="button">Sign in To leave a comment</button></a>
         {%endif%}
       </div>
-
-      <div class="col-md-2"></div>
+      <div class="col-md-4">
+        <div class="" style="font-size: 16px; border: solid rgb(153, 0, 105);" >
+          <p class="font-weight-bold text-center" id='om'>comments</p>
+          <hr class="font-weight-bold">
+          {%for con in comments%}
+          <p><i class="font-weight-bold p-3">@{{con.user}}</i> {{con.comment}}</p>
+          {%endfor%}
+        </div>
+      </div>
   </div>
 <br><br><br>
 </div>

@@ -2,20 +2,43 @@
 
 {{block.super}}
 {%block content%}
-<div class="home">
-<div class="overly">
-  <br><br><br>
-  <h4 id="awa">Awwards</h4>
-  <p>Home of innovation and Ideas </p>
-    <button class="btn btn-outline-default" type="button" name="button">Jquery</button>
-    <button class="btn btn-outline-danger" type="button" name="button">Css3</button>
-    <button class="btn btn-outline-primary" type="button" name="button">Javascript</button>
-    <button class="btn btn-outline-secondary" type="button" name="button">UI</button>
-    <button class="btn btn-outline-info" type="button" name="button">Material Design</button><br>
-    <button class="btn btn-outline-success" type="button" name="button">Bootstrap</button>
-    <button class="btn btn-outline-light" type="button" name="button">SweetAlert</button>
-</div>
-</div>
+{% include 'navbar.html'%}
+<div class="home container-fluid" style="height: 80vh;background-image: url('https://cdn.pixabay.com/photo/2016/05/05/11/22/particles-1373684_960_720.jpg');">
+  <div class="overly">
+    <h5 class="float-left pl-5 pt-5 text-white"><span class="font-weight-bold">Site of the Day</span> &nbsp;<span id="displayDate"></span></h5>
+      <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-6" style="margin-top: 120px;">
+          <h2 class="text-white font-weight-bold">name</h2>
+          <p style="font-size: 14px;" class="i">by &nbsp;<b class='b'>kelvin&nbsp;</b> Rated&nbsp;  at&nbsp;  <strong> 9.0</strong></p>
+          <div class="design row ml-5 pt-4">
+            <div>
+              <a target="_blank"  href="{{i.link}}">9.5</a>
+              <i id="de">design</i>
+            </div>
+            <div>
+              <a target="_blank" href="{{i.link}}">9.0</a>
+              <i id="us">usability</i>
+            </div>
+            <div>
+              <a target="_blank" class='b' href="{{i.link}}">8.5</a>
+              <i  id="con">content</i>
+            </div>
+            <div>
+              <a target="_blank" class='b' href="{{i.link}}">8.5</a>
+              <i  id="con">content</i>
+            </div>
+          </div>
+        </div> 
+      </div>
+    </div>
+    <div class="row mt-5">
+      <a class="btn btn-sm btn-default bg-default ml-5 font-weight-bold" style="text-transform: lowercase; font-size: 14px; border-radius: 25px;" href="{{i.link}}">Visit site</a>
+      <a class="btn btn-sm btn-outline-white bg-default ml-3 font-weight-bold" style="text-transform: lowercase; font-size: 14px; border-radius: 25px;" href="{{i.link}}">Collect</a>
+    </div>
+  </div>
+  </div>
 <br>
 <div class="container-fluid">
   <div class="col-md-6">
