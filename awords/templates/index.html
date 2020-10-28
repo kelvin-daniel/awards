@@ -33,9 +33,9 @@
       </div> 
     </div>
   </div>
-  <div class="row">
-    <a class="btn btn-default bg-default ml-5 font-weight-bold" style="text-transform: lowercase; font-size: 14px; border-radius: 25px;" href="{{i.link}}">Visit site</a>
-    <a class="btn btn-outline-white bg-default ml-3 font-weight-bold" style="text-transform: lowercase; font-size: 14px; border-radius: 25px;" href="{{i.link}}">Collect</a>
+  <div class="row mt-5">
+    <a class="btn btn-sm btn-default bg-default ml-5 font-weight-bold" style="text-transform: lowercase; font-size: 14px; border-radius: 25px;" href="{{i.link}}">Visit site</a>
+    <a class="btn btn-sm btn-outline-white bg-default ml-3 font-weight-bold" style="text-transform: lowercase; font-size: 14px; border-radius: 25px;" href="{{i.link}}">Collect</a>
   </div>
 </div>
 </div>
@@ -50,22 +50,16 @@
         <div class="check">
           <i class="dta">{{project.date}}</i>
           <p>{{project.name}}</p>
-
           <hr>
           <div class="">
             <i class="fas fa-pastafarianism"></i>
             <p>by {{project.user}}</p>
           </div>
         </div>
-
       </div>
       <br>
     </div>
-
     {%endfor%}
-
   </div>
-
 </div>
-
 {%endblock%}
