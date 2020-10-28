@@ -253,20 +253,6 @@ body{
   color: #2bbbad;
   padding:8px;
 }
-.sidePro{
-  height: 550px;
-  color: white;
-  box-shadow: 1px 1px 5px black;
-}
-.improfile{
-  background-image: url(../img/bg.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  height: 30vh;
-
-
-}
 .over{
     padding: 10px;
     height: 30vh;
@@ -304,8 +290,11 @@ body{
   text-align: center;
 }
 
-@media screen and (max-width:360px)  {
+@media screen and (max-width:400px)  {
   .overl{
+    display: none;
+  }
+  .design{
     display: none;
   }
 }
