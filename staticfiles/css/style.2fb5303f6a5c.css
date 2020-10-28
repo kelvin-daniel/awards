@@ -190,7 +190,7 @@ body{
 /* home page*/
 
 .home{
-  background-image: url(../img/cov.jpg);
+  background-image: url("../img/cov.b948ea27cf93.jpg");
   height: 60vh;
   background-repeat: no-repeat;
   background-position: center;
@@ -241,7 +241,7 @@ body{
   padding: 10px;
 }
 #logg{
-  background-image: url(../img/bg.jpg);
+  background-image: url("../img/bg.8ce6f13803b5.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
