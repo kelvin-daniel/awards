@@ -29,17 +29,16 @@ class Projects(models.Model):
         return searched
 
 class Profile(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
     profile=CloudinaryField('image', null=True)
     bio=models.CharField(max_length=60)
-    user=models.ForeignKey(User,on_delete=models.CASCADE)
-    phone=models.IntegerField()
     class Meta:
         ordering=['-profile']
 
 class Comments(models.Model):
+    pro_id=models.IntegerField(default=0)
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     comment=models.TextField(max_length=200)
-    pro_id=models.IntegerField(default=0)
 
 class Rates(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
