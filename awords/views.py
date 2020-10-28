@@ -1,13 +1,13 @@
 from django.shortcuts import render,redirect
 from .forms import PostForm,RateForm,ReviewForm,UpdateForm
+from django.contrib.auth.decorators import login_required
 from .models import Projects,Rates,Comments,Profile
 from django.http import HttpResponse,Http404,HttpResponseRedirect,JsonResponse
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from .serializer import ProjectSerializer,ProfileSerializer
+import random
 from rest_framework.response import Response
 from rest_framework.views import APIView
-import random
-from .serializer import ProjectSerializer,ProfileSerializer
 
 # Create your views here.
 def index(request):
@@ -172,6 +172,7 @@ class ProfileList(APIView):
         all_profiles=Profile.objects.all()
         serializers=ProfileSerializer(all_profiles,many=True)
         return Response(serializers.data)
+
 @login_required(login_url='/accounts/login/')
 def apiView(request):
     current_user=request.user
