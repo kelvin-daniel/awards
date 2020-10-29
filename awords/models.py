@@ -18,6 +18,9 @@ class Projects(models.Model):
     date=models.DateField(auto_now=True)
     screen1=CloudinaryField('image', null=True)
     screen2=CloudinaryField('image', null=True)
+    class Meta:
+        verbose_name='Project'
+        verbose_name_plural='Project'
 
     class Meta:
         ordering=['-sitename']
@@ -35,11 +38,17 @@ class Profile(models.Model):
     bio=models.CharField(max_length=60)
     class Meta:
         ordering=['-profile']
+    class Meta:
+        verbose_name='Profile'
+        verbose_name_plural = 'Profiles'
 
 class Comments(models.Model):
     pro_id=models.IntegerField(default=0)
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     comment=models.TextField(max_length=200)
+    class Meta:
+        verbose_name='Comment'
+        verbose_name_plural = 'Comments'
 
 class Rates(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
@@ -48,5 +57,8 @@ class Rates(models.Model):
     usability=models.PositiveIntegerField(default=0,validators=[MaxValueValidator(10)])
     content=models.PositiveIntegerField(default=0,validators=[MaxValueValidator(10)])
     
+    class Meta:
+        verbose_name='Rate'
+        verbose_name_plural = 'Rates'
 
 
