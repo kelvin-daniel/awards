@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from .forms import PostForm,RateForm,ReviewForm,UpdateForm
+from .forms import SignupForm
 from django.contrib.auth.decorators import login_required
 from .models import Projects,Rates,Comments,Profile
 from django.http import HttpResponse,Http404,HttpResponseRedirect,JsonResponse
@@ -10,6 +11,24 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 # Create your views here.
+def Signup(request):
+	if request.method == 'POST':
+		form = SignupForm(request.POST)
+		if form.is_valid():
+			username = form.cleaned_data.get('username')
+			email = form.cleaned_data.get('email')
+			password = form.cleaned_data.get('password')
+			User.objects.create_user(username=username, email=email, password=password)
+			return redirect('profile')
+	else:
+		form = SignupForm()
+	
+	context = {
+		'form':form,
+	}
+
+	return render(request, 'django_registration/registration_form.html', context)
+
 def index(request):
 
     try:
