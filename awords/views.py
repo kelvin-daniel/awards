@@ -26,7 +26,6 @@ def Signup(request):
 	context = {
 		'form':form,
 	}
-
 	return render(request, 'django_registration/registration_form.html', context)
 
 def index(request):
@@ -114,15 +113,15 @@ def project_detail(request,project_id):
         content.append(i.content)
     if len(usability) > 0 or len(design)> 0 or len(content) >0:
 
-        average_usa=round(sum(usability)/len(usability),1)
-        average_des=round(sum(design)/len(design),1)
-        average_con=round(sum(content)/len(content),1)
+        average_usability=round(sum(usability)/len(usability),1)
+        average_design=round(sum(design)/len(design),1)
+        average_content=round(sum(content)/len(content),1)
 
-        averageRating=round((average_con+average_des+average_usa)/3,1)
+        averageRating=round((average_content+average_design+average_usability)/3,1)
     else:
-        average_usa=0.0
-        average_des=0.0
-        average_con=0.0
+        average_usability=0.0
+        average_design=0.0
+        average_content=0.0
         averageRating=0.0
     '''
     Restricting user to rate only once
@@ -146,14 +145,14 @@ def project_detail(request,project_id):
         user_comment=Comments.objects.filter(pro_id=project_id)
     except Exception as e:
         raise Http404()
-    return render(request,'details.html',{'projects':projects,'form':form,'usability':average_usa,'design':average_des,'content':average_con,'average':averageRating,'auth':auth,'all':all,'ave':ave,'review':review,'comments':user_comment})
+    return render(request,'details.html',{'projects':projects,'form':form,'usability':average_usability,'design':average_design,'content':average_content,'average':averageRating,'auth':auth,'all':all,'ave':ave,'review':review,'comments':user_comment})
 
 @login_required(login_url='/accounts/login/')
 def apiView(request):
     current_user=request.user
     title="Api|Developers"
-    profis=Profile.objects.filter(user=current_user)[0:1]
-    return render(request,'developer.html',{"title":title,'profile':profis})
+    profs=Profile.objects.filter(user=current_user)[0:1]
+    return render(request,'developer.html',{"title":title,'profile':profs})
 
 def search(request):
 
@@ -171,7 +170,6 @@ class ProjectList(APIView):
         all_projects=Projects.objects.all()
         serializers=ProjectSerializer(all_projects,many=True)
         return Response(serializers.data)
-
 
 class ProfileList(APIView):
     def get(self,request,format=None):

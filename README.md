@@ -30,6 +30,7 @@ pass: admin
     - cloudinary
     - whitenoise
     - Postgresql
+    - Django-Rest-Framework
     - Heroku for deployment
 
 ### version 1.0
