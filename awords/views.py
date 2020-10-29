@@ -60,7 +60,7 @@ def project_detail(request,project_id):
         all=Rates.objects.filter(project=project_id)
     except Exception as e:
         raise Http404()
-    #user single
+
     count=0
     for i in all:
         count+=i.usability
@@ -72,20 +72,17 @@ def project_detail(request,project_id):
     else:
         ave=0
 
-
     if request.method=='POST':
         form=RateForm(request.POST)
         if form.is_valid():
             rate=form.save(commit=False)
             rate.user=request.user
             rate.project=project_id
-            #review
+
             rate.save()
             return redirect('details',project_id)
     else:
         form=RateForm()
-
-    #logic
 
     votes=Rates.objects.filter(project=project_id)
     usability=[]
@@ -114,10 +111,7 @@ def project_detail(request,project_id):
     arr1=[]
     for use in votes:
         arr1.append(use.user_id)
-
     auth=arr1
-
-
     if request.method=='POST':
         review=ReviewForm(request.POST)
         if review.is_valid():
@@ -135,16 +129,12 @@ def project_detail(request,project_id):
         raise Http404()
     return render(request,'details.html',{'projects':projects,'form':form,'usability':average_usa,'design':average_des,'content':average_con,'average':averageRating,'auth':auth,'all':all,'ave':ave,'review':review,'comments':user_comment})
 
-# def ajaxRequest(request,project_id):
-#     if request.method=='POST':
-#         form=RateForm(request.POST)
-#         if form.is_valid():
-#             rate=form.save(commit=False)
-#             rate.user=request.user
-#             rate.project=project_id
-#             rate.save()
-#             data={'success':'Your ratings have been recorded successfully '}
-#             return JsonResponse(data)
+@login_required(login_url='/accounts/login/')
+def apiView(request):
+    current_user=request.user
+    title="Api|Developers"
+    profis=Profile.objects.filter(user=current_user)[0:1]
+    return render(request,'developer.html',{"title":title,'profile':profis})
 
 def search(request):
 
@@ -157,9 +147,6 @@ def search(request):
         message="You havent searched any project"
         return render(request,'search.html',{'message':message})
 
-'''
-API View
-'''
 class ProjectList(APIView):
     def get(self,request,format=None):
         all_projects=Projects.objects.all()
@@ -173,9 +160,4 @@ class ProfileList(APIView):
         serializers=ProfileSerializer(all_profiles,many=True)
         return Response(serializers.data)
 
-@login_required(login_url='/accounts/login/')
-def apiView(request):
-    current_user=request.user
-    title="Api|Developers"
-    profis=Profile.objects.filter(user=current_user)[0:1]
-    return render(request,'developer.html',{"title":title,'profile':profis})
+

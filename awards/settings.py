@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'cloudinary',
     'crispy_forms',
+    'django_registration',
 ]
 
 MIDDLEWARE = [
